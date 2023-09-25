@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// usuário logado, redirecionando para a home
 if (isset($_SESSION['id'])) {
     header("Location: /");
 }
@@ -21,12 +22,13 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $mysqli = new mysqli("localhost", "root", "", "xss_server"); 
 
 if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
+    echo "<script>alert(\"Erro no banco de dados\");</script>";
+    goto end;
 } 
 
 $senha = sha1($senha);
 
-$result = $mysqli->query("SELECT id, username, senha FROM usuarios WHERE username = \"{$username}\" AND senha = \"{$senha}\";");
+$result = $mysqli->query("SELECT id FROM usuarios WHERE username = \"{$username}\" AND senha = \"{$senha}\";");
 
 if ($result->num_rows <= 0) {
     echo "<script>alert(\"Login ou senha incorretos\");</script>";
@@ -49,7 +51,8 @@ end:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://www.phptutorial.net/app/css/style.css">
+    <link rel="stylesheet" href="/styles/geral.css">
+    <link rel="stylesheet" href="/styles/form.css">
     <title>Login - XSSocial</title>
 
     <style>
@@ -61,25 +64,29 @@ end:
     </style>
 </head>
 <body>
-    <header>
-        <h1>XSSocial</h1>
-    </header>
+    <nav>
+        <div class="content">
+            <h1>XSSocial</h1>
+        </div>
+    </nav>
 
     <main>
-        <form action="/login.php" id="login" method="post">
-            <div class="form-input">
-                <label for="username">Nome de usuário:</label>
-                <input type="text" id="username" name="username" size="20">
+        <div class="content">
+            <div class="container">
+                <form action="/login.php" id="login" method="post">
+                    <div class="form-input">
+                        <label for="username">Nome de usuário:</label>
+                        <input type="text" id="username" name="username" size="20">
+                    </div>
+                    <div class="form-input">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" size="20">
+                    </div>
+                    <button type="Submit">Login</button>
+                    <a href="/cadastro.php" class="botao">Cadastrar</a>
+                </form>
             </div>
-            <div class="form-input">
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" size="20">
-            </div>
-            <button type="Submit">Login</button>
-            <div id="cadastrar">
-                <a href="/cadastro.php">Cadastrar</a>
-            </div>
-        </form>
+        </div>
     </main>
 
     <script>

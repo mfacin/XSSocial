@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, input, button, textarea {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #fbfeff;
+    color: #333;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+nav {
+    height: 80px;
+    border-bottom: 1px solid #AAAAAF;
+    margin-bottom: 20px;
+}
+
+nav .content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav h1 {
+    font-size: 2rem;
+}
+
+nav .content_container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+nav .content_container a {
+    color: #333;
+    text-decoration: underline;
+}
+
+nav .content_container a:visited {
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #AAAAAF;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.titulo {
+    margin-bottom: 20px;
+}
+
+.titulo hr {
+    margin-top: 1px solid #AAAAAF;
+}
+
+.divisor {
+    display: block;
+    width: 5px;
+    height: 5px;
+    background-color: #AAAAAF;
+    border-radius: 3px;
+    margin: 0 6px;
+}

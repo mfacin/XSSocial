@@ -1,0 +1,40 @@
+.post {
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #d2d2da;
+
+    display: grid;
+    grid-template-columns: 64px 1fr;
+}
+
+.post-imagem img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.post-usuario {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+}
+
+.post-username {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.post-criado {
+    font-size: .9rem;
+    color: #7c7c7e;
+}
+
+.post-texto .post-paragrafo {
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.post-texto .post-paragrafo:nth-last-child() {
+    margin-bottom: 0;
+}
